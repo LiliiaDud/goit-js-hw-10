@@ -16,12 +16,20 @@
   -webkit-text-size-adjust: 100%;
 }
 
-body {
+/*body {
   display: flex;
   flex-direction: column;
   min-width: 100vw;
   min-height: 100vh;
   margin: 0;
+}*/
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f7f7;
 }
 
 main {
