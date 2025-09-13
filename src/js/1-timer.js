@@ -15,7 +15,6 @@ const secondsEl = document.querySelector("[data-seconds]");
 let userSelectedDate = null;
 let timerId = null;
 
-// Налаштування flatpickr
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -25,9 +24,13 @@ const options = {
     const pickedDate = selectedDates[0];
     if (pickedDate <= new Date()) {
       iziToast.error({
-        title: "Error",
+        title: "❌ Error",
         message: "Please choose a date in the future",
         position: "topRight",
+        backgroundColor: "#e69e9eff",
+        titleColor: "#fff",
+        messageColor: "#fff",
+        icon: null
       });
       startBtn.disabled = true;
     } else {
@@ -39,7 +42,6 @@ const options = {
 
 const picker = flatpickr("#datetime-picker", options);
 
-// Натискання кнопки Start
 startBtn.addEventListener("click", () => {
   startBtn.disabled = true;
   input.disabled = true;
@@ -60,7 +62,6 @@ startBtn.addEventListener("click", () => {
   }, 1000);
 });
 
-// Функція оновлення інтерфейсу
 function updateTimer({ days, hours, minutes, seconds }) {
   daysEl.textContent = addLeadingZero(days);
   hoursEl.textContent = addLeadingZero(hours);
@@ -68,12 +69,10 @@ function updateTimer({ days, hours, minutes, seconds }) {
   secondsEl.textContent = addLeadingZero(seconds);
 }
 
-// Додає 0 перед числами < 10
 function addLeadingZero(value) {
   return String(value).padStart(2, "0");
 }
 
-// Конвертація мілісекунд у дні/год/хв/сек
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
